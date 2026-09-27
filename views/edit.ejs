@@ -1,56 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Edit User</title>
+
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-  <h1>Edit User</h1>
+  <div class="container">
 
-  <form action="/users/<%= user.id %>?_method=PUT" method="POST">
-
-    <div>
-      <label for="name">Name</label>
-
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value="<%= user.name %>"
-        required
-      >
+    <div class="page-title">
+      <h1>Edit User</h1>
+      <p>Update user information</p>
     </div>
 
-    <br>
+    <div class="form-box">
 
-    <div>
-      <label for="email">Email</label>
+      
+      <% if (error) { %>
 
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value="<%= user.email %>"
-        required
+  <p class="error-message">
+    <%= error %>
+  </p>
+
+<% } %>
+
+      <form
+        action="/users/<%= user.id %>?_method=PUT"
+        method="POST"
       >
+
+        <div class="form-group">
+          <label for="name">Name</label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="<%= user.name %>"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="<%= user.email %>"
+            required
+          >
+        </div>
+
+        <button type="submit" class="primary-btn">
+          Update User
+        </button>
+
+      </form>
+
     </div>
 
-    <br>
+    <a href="/" class="edit-btn">
+      Back to Users
+    </a>
 
-    <button type="submit">
-      Update User
-    </button>
-
-  </form>
-
-  <br>
-
-  <a href="/">
-    Back
-  </a>
+  </div>
 
 </body>
+
 </html>
